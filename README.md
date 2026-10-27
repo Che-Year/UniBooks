@@ -39,7 +39,25 @@ Direct links:
 - [计算机网络（第 8 版）— 谢希仁](<Network-Engineering/计算机网络(第 8 版)-谢希仁-9787121411748.pdf>)
 - [计算机组成原理（第 4 版）— 蒋本珊](<Network-Engineering/计算机组成原理(第4版)-蒋本珊-9787302530213.pdf>)
 
-### Cloning
+### Downloading
+
+Each book is 34–122 MB. Two facts, both measured against these exact files:
+
+- **ZIP does not help.** All three are scanned image PDFs, so the content is already
+  compressed. A maximum-compression ZIP shrinks them by roughly 2% (33.6 MB → 33.0 MB),
+  which is not worth an extra copy of every book.
+- **The LFS bandwidth quota is the real limit.** GitHub's free tier gives this repository
+  1 GB of LFS traffic per month and the three files total 274 MB, so after about three
+  full downloads the files stop resolving until the monthly quota resets.
+
+Because of that, prefer a resumable clone over clicking download:
+
+```bash
+git lfs install
+git clone https://github.com/Che-Year/UniBooks.git
+cd UniBooks
+git lfs pull
+```
 
 The PDFs are stored with **Git LFS**, because two of them exceed GitHub's 100 MB
 per-file limit. A clone without LFS support gives you small pointer files instead of the
@@ -101,7 +119,24 @@ UniBooks/
 - [计算机网络（第 8 版）— 谢希仁](<Network-Engineering/计算机网络(第 8 版)-谢希仁-9787121411748.pdf>)
 - [计算机组成原理（第 4 版）— 蒋本珊](<Network-Engineering/计算机组成原理(第4版)-蒋本珊-9787302530213.pdf>)
 
-### 克隆说明
+### 下载说明
+
+三本书体积在 34–122 MB 之间。有两点是针对这几个文件的实测结论：
+
+- **压缩成 zip 没有意义。** 三本都是扫描件，PDF 内部已经压缩过，用最高压缩率打包 zip
+  只能省约 2%（33.6 MB → 33.0 MB），不值得为此让仓库里再多存一份副本。
+- **真正的限制是 LFS 流量额度。** GitHub 免费额度给本仓库每月 1 GB 的 LFS 下载流量，
+  而三个文件合计 274 MB，也就是全仓库大约被完整下载三次后，当月就无法再拉取，
+  要等下个月额度重置。
+
+因此建议用可续传的克隆方式，而不是在网页上直接点下载：
+
+```bash
+git lfs install
+git clone https://github.com/Che-Year/UniBooks.git
+cd UniBooks
+git lfs pull
+```
 
 仓库中的 PDF 使用 **Git LFS** 存储，因为其中两本超过了 GitHub 单文件 100 MB 的限制。
 如果未安装 LFS，克隆下来的只会是几十字节的指针文件，而不是真正的 PDF。
