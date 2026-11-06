@@ -27,7 +27,8 @@ generated from them for the [Lexis](#) plugin in Obsidian.
 Lexis-WorkBank/
 ├── ODE 3e 20191231M.mdx    dictionary entries  (87.5 MB)
 ├── ODE 3e 20191231M.mdd    dictionary resources (22.1 MB)
-└── lexis-workbank.zip      generated word bank  (78.1 MB)
+├── lexis-workbank.zip      generated word bank  (78.1 MB)
+└── README.md               this document
 ```
 
 ### The word bank
@@ -50,7 +51,7 @@ tags:
 |---|---|
 | Frontmatter | Empty `tags:` block, matching the Lexis convention |
 | First line | `[[WordBank]]`, the tag that files this note as a word-bank entry |
-| `#### 释义` | Part of speech plus the Chinese definitions, up to four per entry, joined with `；` |
+| `#### 释义` | Part of speech plus the Chinese definitions, up to four per entry, joined with `；`. Entries with more than four parts of speech (e.g. the suffix `-en`) list one line per part of speech instead |
 | `#### 例句` | English example and its Chinese translation, joined with `——`; up to two |
 
 A few points about the data, measured against these exact files:
@@ -61,11 +62,13 @@ A few points about the data, measured against these exact files:
 - **Definitions.** Chinese definitions are used wherever the dictionary provides them.
   About 116,000 entries are English-only in the source; for those the English
   definition is used instead, so every file still has a `#### 释义` section.
-- **Examples.** Roughly 10% of entries carry an example. ODE supplies examples mainly
-  for common words; rare words, proper nouns and multi-word phrases generally have
-  none, so many files have an empty `#### 例句` section.
-- **Name collisions.** 267 pairs differ only in case, which Windows and macOS cannot
-  store side by side. These are disambiguated with a `_2` suffix.
+- **Examples.** Roughly 10% of entries carry an example (about 23,800 of 243,119).
+  ODE supplies examples mainly for common words; rare words, proper nouns and
+  multi-word phrases generally have none, so most files have an empty `#### 例句`
+  section. The section heading is kept so the template stays uniform.
+- **Name collisions.** 267 entries differ from another entry only in case, which
+  Windows and macOS cannot store side by side. They are disambiguated with `_2`, and
+  `_3` where a third variant exists.
 - **Links.** `[[WordBank]]` is the only wiki-link in a generated file. Source-specific
   links are deliberately absent, so the files do not depend on notes outside the vault.
 
@@ -84,8 +87,8 @@ The files were produced by parsing the `.mdx` directly, in this order:
 
 - The two dictionary files are a matched pair. Copy both; the `.mdx` alone will render
   without styling or pronunciation images.
-- `lexis-workbank.zip` is the 243,000-file tree packed once, because unpacked it is
-  243,119 small files — far more than is practical to commit individually.
+- `lexis-workbank.zip` is the whole tree packed once; unpacked it is 243,119 small
+  files, far more than is practical to commit individually.
 
 ### Copyright and disclaimer
 
@@ -115,9 +118,10 @@ Please support the publisher by buying a legitimate copy.
 
 ```
 Lexis-WorkBank/
-├── ODE 3e 20191231M.mdx    词典词条   (87.5 MB)
-├── ODE 3e 20191231M.mdd    词典资源   (22.1 MB)
-└── lexis-workbank.zip      生成的词库 (~N0 MB)
+├── ODE 3e 20191231M.mdx     词典词条   (87.5 MB)
+├── ODE 3e 20191231M.mdd     词典资源   (22.1 MB)
+├── lexis-workbank.zip       生成的词库 (78.1 MB)
+└── README.md                本文档
 ```
 
 ### 词库说明
@@ -139,7 +143,7 @@ tags:
 |---|---|
 | frontmatter | 空的 `tags:` 块，与 Lexis 的约定一致 |
 | 首行 | `[[WordBank]]`，把这个笔记归入词库的标签 |
-| `#### 释义` | 词性 + 中文释义，每个词条最多 4 条，用 `；` 分隔 |
+| `#### 释义` | 词性 + 中文释义，每个词性最多 4 条，用 `；` 分隔。词性超过 4 个的词条（如后缀 `-en`）改为每个词性单独一行 |
 | `#### 例句` | 英文例句与其中文翻译，用 `——` 分隔，最多 2 条 |
 
 以下是基于这批文件实测的几点说明：
@@ -148,9 +152,11 @@ tags:
   184 条是源数据里的空壳条目，任何语言下都没有释义文本。
 - **释义。** 词典提供中文释义时一律用中文。约有 11.6 万条在原词典中只有英文释义，
   这类词条改用英文释义，从而保证每个文件都有 `#### 释义` 段。
-- **例句。** 约 10% 的词条带例句。ODE 主要为常用词配例句，冷僻词、专有名词和多数
-  多词短语本身没有，因此不少文件的 `#### 例句` 段为空。
-- **重名。** 有 267 组词条仅大小写不同，Windows 和 macOS 无法并存，已用 `_2` 后缀区分。
+- **例句。** 约 10% 的词条带例句（243,119 个文件中约 23,800 个）。ODE 主要为常用词
+  配例句，冷僻词、专有名词和多数多词短语本身没有，因此大部分文件的 `#### 例句` 段为
+  空；该段标题仍保留，以维持模板统一。
+- **重名。** 有 267 条词条与其他词条仅大小写不同，Windows 和 macOS 无法并存，已用
+  `_2` 后缀区分，存在第三个变体的用 `_3`。
 - **链接。** 生成的文件中唯一的双链是 `[[WordBank]]`，刻意不带任何源笔记链接，避免
   依赖词库之外的笔记。
 
@@ -168,8 +174,8 @@ tags:
 
 - 两个词典文件是配套的一对，需要一起复制。只有 `.mdx` 时能显示内容，但没有样式和
   发音图片。
-- `lexis-workbank.zip` 是 24 万个文件的整体压缩包。解压后是 243,119 个小文件，
-  逐个提交并不现实，因此打包存放。
+- `lexis-workbank.zip` 是整个目录一次打包的成品。解压后是 243,119 个小文件，逐个提交
+  并不现实，因此打包存放。
 
 ### 版权声明
 
