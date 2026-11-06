@@ -49,7 +49,7 @@ cd UniBooks
 git lfs pull
 ```
 
-The PDFs are stored with **Git LFS**, because all three exceed GitHub's 100 MB
+The PDFs are stored with **Git LFS**, because two of them exceed GitHub's 100 MB
 per-file limit. A clone without LFS support gives you small pointer files instead of
 the actual PDFs.
 
@@ -107,7 +107,7 @@ cd UniBooks
 git lfs pull
 ```
 
-仓库中的 PDF 使用 **Git LFS** 存储，因为三本都超过了 GitHub 单文件 100 MB 的限制。
+仓库中的 PDF 使用 **Git LFS** 存储，因为其中两本超过了 GitHub 单文件 100 MB 的限制。
 未安装 LFS 时，克隆下来的只会是几十字节的指针文件，而不是真正的 PDF。
 
 已经克隆但只看到占位文件的，在仓库目录内执行 `git lfs pull` 即可。在 GitHub 网页上
