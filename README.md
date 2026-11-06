@@ -1,170 +1,83 @@
 # UniBooks
 
-**A curated library of university textbook PDFs.**
-**大学教材 PDF 图书馆。**
+**A curated library of university textbooks and study material.**
+**大学教材与学习资料库。**
 
-English · [简体中文](#简体中文)
+[简体中文](README.zh-CN.md) · **English**
 
 ---
 
-## English
+## About
 
-### About
+UniBooks keeps university-level textbooks and the study material built from them in
+one place, so they are easy to find, cite and study from. Content is grouped by subject,
+one folder per collection, and every folder documents itself.
 
-UniBooks is a personal collection of university-level textbooks, kept in one place so
-they are easy to find, cite, and study from. Books are grouped by subject area, with one
-folder per discipline. Everything here is for personal study and reference.
+Everything here is for personal study and reference.
 
-### Repository layout
+## Collections
 
-```
-UniBooks/
-└── Network-Engineering/
-    ├── 计算机网络(第 8 版)-谢希仁-9787121411748.pdf
-    ├── 计算机网络(第 9 版)-谢希仁-9787121527852.pdf
-    └── 计算机组成原理(第4版)-蒋本珊-9787302530213.pdf
-```
+| Folder | Contents | Size |
+|---|---|---|
+| [Network-Engineering](Network-Engineering/README.md) | Computer networking and computer-organization textbooks, 3 scanned PDFs | 262 MB |
+| [Lexis-WorkBank](Lexis-WorkBank/README.md) | The ODE bilingual dictionary and the Obsidian word bank generated from it | 188 MB |
 
 ### Network-Engineering
 
-| # | Title (中文) | Title (EN) | Author | Edition | Publisher | ISBN | Pages | Size |
-|---|--------------|------------|--------|---------|-----------|------|-------|------|
-| 1 | 计算机网络 | Computer Networks | 谢希仁 (Xie Xiren) | 9th / 第9版 | 电子工业出版社 | 9787121527852 | 435 | 34 MB |
-| 2 | 计算机网络 | Computer Networks | 谢希仁 (Xie Xiren) | 8th / 第8版 | 电子工业出版社 | 9787121411748 | 485 | 122 MB |
-| 3 | 计算机组成原理 | Principles of Computer Organization | 蒋本珊 (Jiang Benshan) | 4th / 第4版 | 清华大学出版社 | 9787302530213 | 355 | 106 MB |
+Textbooks for networking and computer organization: 谢希仁's *Computer Networks* (9th
+and 8th editions) and 蒋本珊's *Principles of Computer Organization* (4th edition).
+Stored with Git LFS. See the [folder README](Network-Engineering/README.md) for the
+catalogue, download guidance and the LFS quota caveat.
 
-Direct links:
+### Lexis-WorkBank
 
-- [计算机网络（第 9 版）— 谢希仁](<Network-Engineering/计算机网络(第 9 版)-谢希仁-9787121527852.pdf>)
-- [计算机网络（第 8 版）— 谢希仁](<Network-Engineering/计算机网络(第 8 版)-谢希仁-9787121411748.pdf>)
-- [计算机组成原理（第 4 版）— 蒋本珊](<Network-Engineering/计算机组成原理(第4版)-蒋本珊-9787302530213.pdf>)
+The *Oxford Dictionary of English, 3rd edition* in bilingual EN→ZH form (`.mdx` + `.mdd`),
+plus a 243,119-file Markdown word bank generated from it for the Obsidian Lexis plugin.
+Stored as ordinary Git objects, so none of it consumes LFS quota. See the
+[folder README](Lexis-WorkBank/README.md) for the file format and how the word bank was
+generated.
 
-### Downloading
+## Downloading
 
-Each book is 34–122 MB. Two facts, both measured against these exact files:
+Two storage mechanisms are in use, and they behave differently:
 
-- **ZIP does not help.** All three are scanned image PDFs, so the content is already
-  compressed. A maximum-compression ZIP shrinks them by roughly 2% (33.6 MB → 33.0 MB),
-  which is not worth an extra copy of every book.
-- **The LFS bandwidth quota is the real limit.** GitHub's free tier gives this repository
-  1 GB of LFS traffic per month and the three files total 274 MB, so after about three
-  full downloads the files stop resolving until the monthly quota resets.
-
-Because of that, prefer a resumable clone over clicking download:
+- **`Network-Engineering` uses Git LFS.** A plain clone without LFS installed gives you
+  small pointer files instead of PDFs. Run `git lfs install` first. The free tier allows
+  1 GB of LFS traffic per month, and these three books total 262 MB, so roughly four
+  full downloads exhaust the month's quota.
+- **`Lexis-WorkBank` uses ordinary Git objects.** No LFS setup needed; it is dragged
+  down with every clone.
 
 ```bash
+# Full clone, including the LFS-hosted books
 git lfs install
 git clone https://github.com/Che-Year/UniBooks.git
 cd UniBooks
 git lfs pull
 ```
 
-The PDFs are stored with **Git LFS**, because two of them exceed GitHub's 100 MB
-per-file limit. A clone without LFS support gives you small pointer files instead of the
-actual PDFs.
+To skip the 262 MB of textbooks and fetch only the text material:
 
 ```bash
-# One-time setup
-git lfs install
-
-# Clone with the files
-git clone https://github.com/Che-Year/UniBooks.git
-cd UniBooks
-git lfs pull
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Che-Year/UniBooks.git
 ```
 
-If you already cloned and only see stub files, run `git lfs pull` inside the repository.
+Browsing and downloading on GitHub.com works without LFS installed — the web viewer
+resolves the files.
 
-Browsing on GitHub.com works without LFS installed — the web viewer resolves the files.
+## Copyright and disclaimer
 
-### Copyright and disclaimer
-
-All books in this repository are the property of their respective authors and publishers.
-They are collected here for **personal study, research, and reference only**. No commercial
-use, redistribution, or resale is intended or permitted. If you are a rights holder and want
+All books in this repository are the property of their respective authors and
+publishers, and the dictionary is the property of Oxford University Press. Everything is
+collected here for **personal study, research and reference only**. No commercial use,
+redistribution or resale is intended or permitted. If you are a rights holder and want
 a file removed, please open an issue and it will be taken down promptly.
 
-Please support the authors and publishers by buying legitimate copies of the books you use.
+Please support the authors, publishers and dictionary makers by buying legitimate
+copies.
 
----
+## License
 
-## 简体中文
-
-### 简介
-
-UniBooks 是一个个人大学教材 PDF 库，把常用教材集中存放，便于查阅、引用和学习。
-书籍按学科分类，每个学科一个文件夹。本仓库仅用于个人学习与参考。
-
-### 仓库结构
-
-```
-UniBooks/
-└── Network-Engineering/
-    ├── 计算机网络(第 8 版)-谢希仁-9787121411748.pdf
-    ├── 计算机网络(第 9 版)-谢希仁-9787121527852.pdf
-    └── 计算机组成原理(第4版)-蒋本珊-9787302530213.pdf
-```
-
-### Network-Engineering（网络工程）
-
-| # | 书名 | 作者 | 版次 | 出版社 | ISBN | 页数 | 大小 |
-|---|------|------|------|--------|------|------|------|
-| 1 | 计算机网络 | 谢希仁 | 第 9 版 | 电子工业出版社 | 9787121527852 | 435 | 34 MB |
-| 2 | 计算机网络 | 谢希仁 | 第 8 版 | 电子工业出版社 | 9787121411748 | 485 | 122 MB |
-| 3 | 计算机组成原理 | 蒋本珊 | 第 4 版 | 清华大学出版社 | 9787302530213 | 355 | 106 MB |
-
-直接下载：
-
-- [计算机网络（第 9 版）— 谢希仁](<Network-Engineering/计算机网络(第 9 版)-谢希仁-9787121527852.pdf>)
-- [计算机网络（第 8 版）— 谢希仁](<Network-Engineering/计算机网络(第 8 版)-谢希仁-9787121411748.pdf>)
-- [计算机组成原理（第 4 版）— 蒋本珊](<Network-Engineering/计算机组成原理(第4版)-蒋本珊-9787302530213.pdf>)
-
-### 下载说明
-
-三本书体积在 34–122 MB 之间。有两点是针对这几个文件的实测结论：
-
-- **压缩成 zip 没有意义。** 三本都是扫描件，PDF 内部已经压缩过，用最高压缩率打包 zip
-  只能省约 2%（33.6 MB → 33.0 MB），不值得为此让仓库里再多存一份副本。
-- **真正的限制是 LFS 流量额度。** GitHub 免费额度给本仓库每月 1 GB 的 LFS 下载流量，
-  而三个文件合计 274 MB，也就是全仓库大约被完整下载三次后，当月就无法再拉取，
-  要等下个月额度重置。
-
-因此建议用可续传的克隆方式，而不是在网页上直接点下载：
-
-```bash
-git lfs install
-git clone https://github.com/Che-Year/UniBooks.git
-cd UniBooks
-git lfs pull
-```
-
-仓库中的 PDF 使用 **Git LFS** 存储，因为其中两本超过了 GitHub 单文件 100 MB 的限制。
-如果未安装 LFS，克隆下来的只会是几十字节的指针文件，而不是真正的 PDF。
-
-```bash
-# 首次使用需安装一次
-git lfs install
-
-# 克隆并拉取文件
-git clone https://github.com/Che-Year/UniBooks.git
-cd UniBooks
-git lfs pull
-```
-
-已经克隆但只看到占位文件的，在仓库目录内执行 `git lfs pull` 即可。
-
-在 GitHub 网页上直接浏览和下载无需安装 LFS，网页端会自动解析文件。
-
-### 版权声明
-
-本仓库所有书籍的版权归原作者及出版社所有，仅用于**个人学习、研究与参考**，
-不用于任何商业用途、再分发或转售。如版权方希望移除某个文件，请提交 issue，会尽快处理。
-
-请通过正规渠道购买正版图书，支持作者与出版社。
-
----
-
-### License
-
-The README and repository structure are released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-The books themselves are **not** covered by this license — see the copyright notice above.
+This README and the repository structure are released under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The books and the dictionary
+are **not** covered by this license — see the copyright notice above.

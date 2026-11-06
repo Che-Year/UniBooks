@@ -3,7 +3,7 @@
 **The ODE dictionary data and its generated Obsidian Lexis word bank.**
 **《新牛津英汉双解大词典》词典本体，以及基于它构建的 Obsidian Lexis 词库。**
 
-English · [简体中文](#简体中文)
+English · [简体中文](#简体中文) · [← Back to UniBooks](../README.md)
 
 ---
 
@@ -189,9 +189,4 @@ tags:
 
 ---
 
-### License
-
-This README and the folder structure are released under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-The dictionary and the word bank derived from it are **not** covered by this license —
-see the copyright notice above.
+[← 返回 UniBooks](../README.md)
